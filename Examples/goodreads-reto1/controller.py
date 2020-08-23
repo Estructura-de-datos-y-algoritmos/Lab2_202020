@@ -156,7 +156,7 @@ def getBestBooks (catalog, number):
 
 def getBooksByTag (catalog, tag):
     tags = catalog['tags']
-    pos = lt.isPresent (tags, tag, comparetagnames)
+    pos = lt.isPresent (tags, tag)
     if pos:
         elem = lt.getElement (tags, pos)
         return elem 

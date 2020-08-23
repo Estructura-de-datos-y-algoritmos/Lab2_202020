@@ -76,7 +76,7 @@ def addBookAuthor (catalog, authorname, book, compareauthors):
     Adiciona un autor a lista de autores, la cual guarda referencias a los libros de dicho autor
     """
     authors = catalog['authors']
-    posauthor = lt.isPresent (authors, authorname, compareauthors)
+    posauthor = lt.isPresent(authors, authorname)
     if posauthor > 0:
         author = lt.getElement (authors,posauthor)    
     else:
@@ -105,12 +105,12 @@ def addBookTag (catalog, tag, comparefunction, comparegoodreadsid):
     """
     bookid = tag['goodreads_book_id']
     tagid = tag['tag_id']
-    pos = lt.isPresent(catalog['tags'], tagid, comparefunction)
+    pos = lt.isPresent(catalog['tags'], tagid)
     if pos:
         tagbook = lt.getElement (catalog['tags'], pos)
         tagbook ['total_books'] += 1
         tagbook ['count'] += int (tag['count'])
-        posbook = lt.isPresent(catalog['books'], bookid, comparegoodreadsid)
+        posbook = lt.isPresent(catalog['books'], bookid)
         if posbook:
             book =  lt.getElement (catalog['books'], posbook) 
             lt.addLast (tagbook['books'], book)
@@ -122,7 +122,7 @@ def getBooksByAuthor (catalog, authorname, compareauthors):
     """
     Retorna un autor con sus libros a partir del nombre del autor
     """
-    posauthor = lt.isPresent (catalog['authors'], authorname, compareauthors)
+    posauthor = lt.isPresent (catalog['authors'], authorname)
     if posauthor > 0:
         author = lt.getElement (catalog['authors'], posauthor)
         return author
