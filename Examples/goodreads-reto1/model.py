@@ -40,9 +40,9 @@ def newCatalog():
     generos.   Retorna el catalogo inicializado.
     """
     catalog = {'books':None, 'authors':None, 'tags': None}
-    catalog['books'] = lt.newList('ARRAY_LIST')
-    catalog['authors'] = lt.newList('ARRAY_LIST')
-    catalog['tags'] = lt.newList('ARRAY_LIST')
+    catalog['books'] = lt.newList(datastructure='ARRAY_LIST', cmpfunction=None )
+    catalog['authors'] = lt.newList(datastructure='ARRAY_LIST', cmpfunction=None )
+    catalog['tags'] = lt.newList(datastructure='ARRAY_LIST', cmpfunction=None )
     return catalog
 
 
@@ -52,7 +52,7 @@ def newAuthor (name):
     """
     author = {'name':"", "books":None,  "average_rating":0}
     author ['name'] = name
-    author ['books'] = lt.newList('ARRAY_LIST')
+    author ['books'] = lt.newList(datastructure='ARRAY_LIST', cmpfunction=None )
     return author
 
 
