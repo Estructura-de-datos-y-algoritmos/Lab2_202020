@@ -90,6 +90,7 @@ def loadBooks (catalog):
         authors = book['authors'].split(",")
         # Cada autor, se crea en la lista de libros del catalogo, y se 
         # crea un libro en la lista de dicho autor (apuntador al libro)
+        borrar=book['book_id']
         for author in authors:
             model.addBookAuthor (catalog, author.strip(), book, compareauthors)
     sort.mergesort (catalog['books'],compareratings)
