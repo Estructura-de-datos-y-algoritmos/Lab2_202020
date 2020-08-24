@@ -23,8 +23,7 @@
 import config as cf
 from ADT import list as lt
 from DataStructures import listiterator as it
-
-
+import controller
 """
 Se define la estructura de un catálogo de libros.
 El catálogo tendrá tres listas, una para libros, otra para autores 
@@ -40,9 +39,9 @@ def newCatalog():
     generos.   Retorna el catalogo inicializado.
     """
     catalog = {'books':None, 'authors':None, 'tags': None}
-    catalog['books'] = lt.newList('ARRAY_LIST')
-    catalog['authors'] = lt.newList('ARRAY_LIST')
-    catalog['tags'] = lt.newList('ARRAY_LIST')
+    catalog['books'] = lt.newList('SINGLE_LINKED', controller.comparegoodreadsid)
+    catalog['authors'] = lt.newList('SINGLE_LINKED', controller.compareauthors)
+    catalog['tags'] = lt.newList('SINGLE_LINKED', controller.compareids)
     return catalog
 
 
@@ -52,7 +51,7 @@ def newAuthor (name):
     """
     author = {'name':"", "books":None,  "average_rating":0}
     author ['name'] = name
-    author ['books'] = lt.newList('ARRAY_LIST')
+    author ['books'] = lt.newList('ARRAY_LIST',controller.compareauthors)
     return author
 
 
@@ -65,7 +64,7 @@ def newTagBook (name, id):
     tag = {'name':'', 'tag_id':'', 'total_books':0, 'books':None, 'count':0.0 }
     tag ['name'] = name
     tag ['tag_id'] = id
-    tag ['books'] = lt.newList ()
+    tag ['books'] = lt.newList ('SINGLE_LINKED',controller.comparegoodreadsid)
     return tag
 
 
@@ -76,7 +75,7 @@ def addBookAuthor (catalog, authorname, book, compareauthors):
     Adiciona un autor a lista de autores, la cual guarda referencias a los libros de dicho autor
     """
     authors = catalog['authors']
-    posauthor = lt.isPresent (authors, authorname, compareauthors)
+    posauthor = lt.isPresent (authors, authorname)
     if posauthor > 0:
         author = lt.getElement (authors,posauthor)    
     else:
