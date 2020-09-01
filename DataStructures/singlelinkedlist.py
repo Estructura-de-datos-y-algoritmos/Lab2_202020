@@ -357,7 +357,11 @@ def isPresent (lst, element):
         if size > 0:
             node = lst['first']
             keyexist = False
+            #count=0
+            print(element)
             for keypos in range (1,size+1):
+                #count+=1
+                #print((lst['cmpfunction'] (element, node['info']), count, keypos))
                 if (lst['cmpfunction'] (element, node['info'] )==0):
                     keyexist = True
                     break
